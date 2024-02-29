@@ -1,72 +1,83 @@
 # Music Recommendation System
-A unsupervised learning model which analyses playlists and gives recommendations. Dataset used is <a href="https://github.com/mdeff/fma#data">FMA</a>.
 
+A unsupervised learning model which analyses playlists and gives recommendations. Dataset used is <a href="https://github.com/mdeff/fma#data">FMA</a>.
 
 <img width="300px" src="https://media.giphy.com/media/tqfS3mgQU28ko/giphy.gif" />
 
 ### Why
+
 We created this project to see if we can actually understand the musical patterns of a listener with their playlist as source and what factors are really useful in determining the taste and interest of the listener.
+And also to get some experience in basic ML and hosting a model.
 
-## Table of Contents
-1. [Next Steps](https://github.com/Sarathisme/music-recommendation-system/blob/readme-changes/README.md#next-steps)
-2. [Installation](https://github.com/Sarathisme/music-recommendation-system/blob/readme-changes/README.md#installation)
-3. [Run it](https://github.com/Sarathisme/music-recommendation-system/blob/readme-changes/README.md#run-it)
+## What you'll need:
 
-### Next steps
-If do not have jupyter and python visit [Install Jupyter and Python](https://github.com/Sarathisme/music-recommendation-system/tree/readme-changes#instal-jupyter-and-python)
+Python 3.x (<https://www.python.org/downloads/>)
 
-If you have them, proceed with the below steps.
+Necessary libraries:
 
-1. Clone the repo 
+      pandas (pip install pandas)
+      numpy (pip install numpy)
+      sklearn (pip install scikit-learn)
+      spotipy (pip install spotipy)
+      dotenv (pip install python-dotenv)
+      http.server (included in the Python standard library)
 
-   ```shell
-   $ git clone https://github.com/Sarathisme/music-recommendation-system.git
-   ````
-2. Visit the [Run It](https://github.com/Sarathisme/music-recommendation-system/blob/readme-changes/README.md#run-it) section
+## Getting Started:
 
-### Instal Jupyter and Python
-1. Clone this repo to get the .ipynb files
-   ```shell
-   $ git clone https://github.com/Sarathisme/music-recommendation-system.git
-   ```
-2. Install python from <a href="https://www.python.org/downloads/"/>https://www.python.org/downloads</a>
+1.  Clone or download the repository.
+2.  Create a .env file in the project directory:
+    Add the following lines, replacing the placeholders with your actual Spotify API credentials:
 
-3. If you already have jupyter in your machine, skip the next step.
+        SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
+        SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
 
-4. Install jupyter either from conda or pip
-    
-   >If you dont have conda installed, get it from <a href="https://docs.continuum.io/anaconda/install/">https://docs.continuum.io/anaconda/install/</a>
-   
-   From conda  
-    ```shell 
-    $ conda install -c conda-forge jupyterlab
-    $ conda install -c conda-forge notebook
-    ```
-    From pip (pip is auto installed when you install python)
-    ```shell 
-    $ pip install jupyterlab
-    $ pip install notebook
-    ```
+For instructions on obtaining your Spotify API credentials, refer to <https://developer.spotify.com/documentation/web-api/>
 
-### Run it
-Unfortunately at this point we do not have a .tar or a pickle file for you to quickly plug and play the code.
+3. Run the code: Execute python app.py (or the main script name) in your terminal.
 
-1. Go to the cloned folder
+## How to Use the Recommendation System:
 
-   ```shell
-   $ cd path/to/code
-   ```
-2. Run setup.py to get the dataset installed and extracted into the project folder.
-   
-   ```shell
-   $ python setup.py
-   ```
+Start the server
 
-3. Open jupyter notebook
+```python
+python3 final.py
+```
 
-   ```shell
-   $ jupyter notebook
-   ```
- 
-3. Open `Music Recommendation System (Data Processing and Analysis).ipynb` for data processing and analysis
-4. Open `Music Recommendation System (Machine Learning).ipynb` for machine learning. This also has the recommendations code.
+You will get an NGROK server link on which the server has been hosted. Use this link to make requests to the server.
+
+
+Prepare a list of songs: Create a JSON-formatted list containing information about the songs you want recommendations for, including their names and release years:
+JSON
+
+```JSON
+[
+   {
+      "name": "Bohemian Rhapsody",
+      "year": 1975
+   },
+   {
+      "name": "Imagine",
+      "year": 1971
+   }
+]
+```
+
+Send the list to the **'/recommend'** API endpoint:
+
+Using cURL (for command line):
+Bash
+
+```
+curl -X POST http://<link>/recommend -H "Content-Type: application/json" -d '[{"name": "Bohemian Rhapsody", "year": 1975}, {"name": "Imagine", "year": 1971}]'
+```
+
+Using Postman or other tools:
+
+Set the request method to POST and the URL to http://localhost:<port>/recommend.
+Set the Content-Type header to application/json.
+Paste the JSON list of songs in the request body.
+Receive recommendations: The system will respond with a JSON list of recommended songs, including their names, artists, and years.
+
+Feel free to experiment with different song selections and explore the recommendations! You can also fine-tune the code further to personalize the recommendations based on additional user preferences, such as mood, genre, or activity.
+
+Note: To properly utilize the code, you'll need a Spotify developer account and a Spotify app created to obtain your API credentials. Please refer to Spotify's documentation for detailed instructions: <https://developer.spotify.com/documentation/web-api/>
