@@ -1,6 +1,6 @@
 # Music Recommendation System
 
-A unsupervised learning model which analyses playlists and gives recommendations. Dataset used is <a href="https://github.com/mdeff/fma#data">FMA</a>.
+A unsupervised learning model which analyses playlists and gives recommendations.
 
 <img width="300px" src="https://media.giphy.com/media/tqfS3mgQU28ko/giphy.gif" />
 
