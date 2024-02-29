@@ -15,12 +15,14 @@ Python 3.x (<https://www.python.org/downloads/>)
 
 Necessary libraries:
 
-      pandas (pip install pandas)
-      numpy (pip install numpy)
-      sklearn (pip install scikit-learn)
-      spotipy (pip install spotipy)
-      dotenv (pip install python-dotenv)
-      http.server (included in the Python standard library)
+```
+pandas (pip install pandas)
+numpy (pip install numpy)
+sklearn (pip install scikit-learn)
+spotipy (pip install spotipy)
+dotenv (pip install python-dotenv)
+http.server (included in the Python standard library)
+```
 
 ## Getting Started:
 
@@ -68,9 +70,9 @@ JSON
 Send the list to the **'/recommend'** API endpoint:
 
 Using cURL (for command line):
-Bash
 
-```
+
+```bash
 curl -X POST http://<link>/recommend -H "Content-Type: application/json" -d '[{"name": "Bohemian Rhapsody", "year": 1975}, {"name": "Imagine", "year": 1971}]'
 ```
 
