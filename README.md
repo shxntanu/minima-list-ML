@@ -26,10 +26,13 @@ Necessary libraries:
 
 1.  Clone or download the repository.
 2.  Create a .env file in the project directory:
-    Add the following lines, replacing the placeholders with your actual Spotify API credentials:
+Add the following lines, replacing the placeholders with your actual Spotify API credentials:
 
-        SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
-        SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
+```env
+SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
+SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
+NGROK_AUTHTOKEN="YOUR_NGROK_AUTHTOKEN"
+```
 
 For instructions on obtaining your Spotify API credentials, refer to <https://developer.spotify.com/documentation/web-api/>
 
@@ -77,7 +80,5 @@ Set the request method to POST and the URL to http://localhost:<port>/recommend.
 Set the Content-Type header to application/json.
 Paste the JSON list of songs in the request body.
 Receive recommendations: The system will respond with a JSON list of recommended songs, including their names, artists, and years.
-
-Feel free to experiment with different song selections and explore the recommendations! You can also fine-tune the code further to personalize the recommendations based on additional user preferences, such as mood, genre, or activity.
 
 Note: To properly utilize the code, you'll need a Spotify developer account and a Spotify app created to obtain your API credentials. Please refer to Spotify's documentation for detailed instructions: <https://developer.spotify.com/documentation/web-api/>
