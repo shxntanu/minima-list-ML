@@ -231,6 +231,19 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self):
+
+        """
+        Input format for body of post request:
+
+        [
+            {
+                "name": "song_name" -> str,
+                "year": song_year -> int
+            },
+            ...
+        ]
+        """
+        
         if self.path == '/recommend':
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
