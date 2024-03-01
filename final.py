@@ -1,23 +1,21 @@
 import os
+import json
+import logging, ngrok
 import numpy as np
 import pandas as pd
+import difflib
+import spotipy
+from collections import defaultdict
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 from sklearn.metrics import euclidean_distances
-import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from collections import defaultdict
 from scipy.spatial.distance import cdist
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import logging, ngrok
-import json
 from collections import defaultdict
-from sklearn.metrics import euclidean_distances
-from scipy.spatial.distance import cdist
-import difflib
 from dotenv import load_dotenv
 
 load_dotenv()
