@@ -52,17 +52,16 @@ You will get an NGROK server link on which the server has been hosted. Use this 
 
 
 Prepare a list of songs: Create a JSON-formatted list containing information about the songs you want recommendations for, including their names and release years:
-JSON
 
 ```JSON
 [
    {
-      "name": "Bohemian Rhapsody",
-      "year": 1975
+      "name": "Castle on the Hill",
+      "year": 2017
    },
    {
-      "name": "Imagine",
-      "year": 1971
+      "name": "Look What You Made Me Do",
+      "year": 2017
    }
 ]
 ```
