@@ -74,7 +74,9 @@ Using cURL (for command line):
 
 
 ```bash
-curl -X POST http://<link>/recommend -H "Content-Type: application/json" -d '[{"name": "Castle on the Hill", "year": 2017}, {"name": "Look What You Made Me Do", "year": 2017}]'
+curl -X POST http://<link>/recommend
+      -H "Content-Type: application/json"
+      -d '[{"name": "Castle on the Hill", "year": 2017}, {"name": "Look What You Made Me Do", "year": 2017}]'
 ```
 
 Using Postman or other tools:
