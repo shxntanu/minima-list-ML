@@ -81,7 +81,7 @@ curl -X POST http://<link>/recommend
 
 Using Postman or other tools:
 
-Set the request method to POST and the URL to http://localhost:<port>/recommend.
+Set the request method to POST and the URL to http://localhost:(port)/recommend.
 Set the Content-Type header to application/json.
 Paste the JSON list of songs in the request body.
 Receive recommendations: The system will respond with a JSON list of recommended songs, including their names, artists, and years.
