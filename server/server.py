@@ -3,7 +3,6 @@ import json
 import logging, ngrok
 import numpy as np
 import pandas as pd
-import difflib
 import spotipy
 from collections import defaultdict
 from sklearn.cluster import KMeans
@@ -263,6 +262,6 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 logging.basicConfig(level=logging.INFO)
-server = HTTPServer(("localhost", 0), RequestHandler)
+server = HTTPServer(("localhost", 8000), RequestHandler)
 ngrok.listen(server)
 server.serve_forever()
