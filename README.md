@@ -1,4 +1,4 @@
-# Music Recommendation System
+# Minima-list
 
 A unsupervised learning model which analyses playlists and gives recommendations.
 
@@ -84,6 +84,62 @@ Using Postman or other tools:
 Set the request method to POST and the URL to http://localhost:(port)/recommend.
 Set the Content-Type header to application/json.
 Paste the JSON list of songs in the request body.
-Receive recommendations: The system will respond with a JSON list of recommended songs, including their names, artists, and years.
+
+The system will respond with a JSON list of recommended songs, including their names, artists, and years.
+
+```json
+[
+    {
+        "name": "Lovesick Girls",
+        "year": 2020,
+        "artists": "['BLACKPINK']"
+    },
+    {
+        "name": "HOME",
+        "year": 2019,
+        "artists": "['BTS']"
+    },
+    {
+        "name": "Sugar (feat. Francesco Yates)",
+        "year": 2015,
+        "artists": "['Robin Schulz', 'Francesco Yates']"
+    },
+    {
+        "name": "MAGO",
+        "year": 2020,
+        "artists": "['GFRIEND']"
+    },
+    {
+        "name": "Run",
+        "year": 2016,
+        "artists": "['BTS']"
+    },
+    {
+        "name": "In My Blood",
+        "year": 2018,
+        "artists": "['Shawn Mendes']"
+    },
+    {
+        "name": "カワキヲアメク",
+        "year": 2019,
+        "artists": "['美波']"
+    },
+    {
+        "name": "Hey Brother",
+        "year": 2013,
+        "artists": "['Avicii']"
+    },
+    {
+        "name": "Hot Stuff",
+        "year": 2020,
+        "artists": "['Kygo', 'Donna Summer']"
+    },
+    {
+        "name": "紅蓮華",
+        "year": 2019,
+        "artists": "['LiSA']"
+    }
+]
+```
 
 Note: To properly utilize the code, you'll need a Spotify developer account and a Spotify app created to obtain your API credentials. Please refer to Spotify's documentation for detailed instructions: <https://developer.spotify.com/documentation/web-api/>
