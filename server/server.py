@@ -220,6 +220,11 @@ def recommend_songs( song_list, spotify_data, n_songs=10):
 
 
 class RequestHandler(BaseHTTPRequestHandler):
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
     def do_GET(self):
         body = bytes("Hello", "utf-8")
         self.protocol_version = "HTTP/1.1"
@@ -255,6 +260,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
             self.wfile.write(response)
+        
         else:
             self.send_response(404)
             self.end_headers()
@@ -263,6 +269,8 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 logging.basicConfig(level=logging.INFO)
+print("Starting server...")
 server = HTTPServer(("localhost", 8000), RequestHandler)
+print("Server started on port 8000")
 # ngrok.listen(server)
 server.serve_forever()
