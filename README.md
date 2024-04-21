@@ -32,13 +32,14 @@ Python 3.x (<https://www.python.org/downloads/>)
 
 Necessary libraries:
 
--   pandas
--   numpy
--   sklearn
--   flask
--   spotipy
--   dotenv
--   http.server
+- pandas
+- numpy
+- sklearn
+- flask
+- spotipy
+- dotenv
+- gunicorn
+- http.server
 
 ## Getting Started
 
@@ -46,25 +47,33 @@ Necessary libraries:
 2. Create a .env file in the project directory:
    Add the following lines, replacing the placeholders with your actual Spotify API credentials:
 
-```env
-SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
-SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
-NGROK_AUTHTOKEN="YOUR_NGROK_AUTHTOKEN"
-```
+    ```env
+    SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
+    SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
+    ```
 
 For instructions on obtaining your Spotify API credentials, refer to <https://developer.spotify.com/documentation/web-api/>
 
-3. Run the code: Execute python app.py (or the main script name) in your terminal.
+3. Create a virtual environment in the project directory and activate it:
+
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+4. Install the required libraries:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## How to Use the Recommendation System
 
 Start the server
 
 ```python
-python3 final.py
+gunicorn app:app
 ```
-
-You will get an NGROK server link on which the server has been hosted. Use this link to make requests to the server.
 
 Prepare a list of songs: Create a JSON-formatted list containing information about the songs you want recommendations for, including their names and release years:
 
