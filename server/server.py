@@ -2,6 +2,7 @@ import os
 import json
 import logging
 # import ngrok
+from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 import spotipy
@@ -218,59 +219,26 @@ def recommend_songs( song_list, spotify_data, n_songs=10):
     rec_songs = rec_songs[~rec_songs['name'].isin(song_dict['name'])]
     return rec_songs[metadata_cols].to_dict(orient='records')
 
-
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_HEAD(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-
-    def do_GET(self):
-        body = bytes("Hello", "utf-8")
-        self.protocol_version = "HTTP/1.1"
-        self.send_response(200)
-        self.send_header("Content-Length", len(body))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def do_POST(self):
-
-        """
-        Input format for body of post request:
-
-        [
-            {
-                "name": "song_name" -> str,
-                "year": song_year -> int
-            },
-            ...
-        ]
-        """
-        
-        if self.path == '/recommend':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            post_data = json.loads(post_data.decode('utf-8'))
-            print("Received POST data:", post_data)
-            
-            song_list = post_data
-            rec_songs = recommend_songs(song_list, data)
-            response = json.dumps(rec_songs)
-            response = bytes(response, "utf-8")
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(response)
-        
-        else:
-            self.send_response(404)
-            self.end_headers()
-            response = bytes("404 Not Found", "utf-8")
-            self.wfile.write(response)
+app = Flask(__name__)
 
 
 logging.basicConfig(level=logging.INFO)
-print("Starting server...")
-server = HTTPServer(("localhost", 8000), RequestHandler)
-print("Server started on port 8000")
-# ngrok.listen(server)
-server.serve_forever()
+
+@app.route('/')
+def index():
+    return 'Minima-list API is running!'
+
+@app.route('/recommend', methods=['POST'])
+def recommend():
+    content = request.json
+    song_list = content
+    rec_songs = recommend_songs(song_list, data)
+    response = json.dumps(rec_songs)
+    return jsonify(response)
+
+@app.route('/helloworld', methods=['GET'])
+def hello_world():
+    return "Hello World"
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8000)
