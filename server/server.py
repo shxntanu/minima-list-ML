@@ -3,6 +3,7 @@ import json
 import logging
 # import ngrok
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import spotipy
@@ -220,6 +221,7 @@ def recommend_songs( song_list, spotify_data, n_songs=10):
     return rec_songs[metadata_cols].to_dict(orient='records')
 
 app = Flask(__name__)
+CORS(app)
 
 
 logging.basicConfig(level=logging.INFO)
