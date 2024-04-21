@@ -1,6 +1,7 @@
 import os
 import json
-import logging, ngrok
+import logging
+# import ngrok
 import numpy as np
 import pandas as pd
 import spotipy
@@ -263,5 +264,5 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 logging.basicConfig(level=logging.INFO)
 server = HTTPServer(("localhost", 8000), RequestHandler)
-ngrok.listen(server)
+# ngrok.listen(server)
 server.serve_forever()
