@@ -7,6 +7,7 @@ from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import spotipy
+import ast
 from collections import defaultdict
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
@@ -192,7 +193,7 @@ def flatten_dict_list(dict_list):
     return flattened_dict
 
 
-def recommend_songs( song_list, spotify_data, n_songs=10):
+def recommend_songs(song_list, spotify_data, n_songs=5):
 
     """
     This function recommends songs based on a list of songs.
@@ -218,6 +219,7 @@ def recommend_songs( song_list, spotify_data, n_songs=10):
 
     rec_songs = spotify_data.iloc[index]
     rec_songs = rec_songs[~rec_songs['name'].isin(song_dict['name'])]
+    rec_songs['artists'] = rec_songs['artists'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
     return rec_songs[metadata_cols].to_dict(orient='records')
 
 app = Flask(__name__)
