@@ -43,3 +43,4 @@ client/next-env.d.ts
 /.venv
 
 */**/.env
+*/**/__pycache__
