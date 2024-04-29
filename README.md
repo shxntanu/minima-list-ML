@@ -1,6 +1,6 @@
 # Minima-list
 
-A unsupervised learning model which analyses playlists and gives recommendations.
+A unsupervised learning model which gives recommendations based on a given song.
 
 <img width="300px" src="https://media.giphy.com/media/tqfS3mgQU28ko/giphy.gif" />
 
@@ -17,12 +17,25 @@ And also to get some experience in basic ML and hosting a model.
 2. Create a .env file in the project directory:
    Add the following lines, replacing the placeholders with your actual Spotify API credentials:
 
-```env
-NEXT_PUBLIC_SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID
-NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET=YOUR_CLIENT_SECRET
-```
+    ```env
+    NEXT_PUBLIC_SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID
+    NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET=YOUR_CLIENT_SECRET
+    ```
 
-For instructions on obtaining your Spotify API credentials, refer to <https://developer.spotify.com/documentation/web-api/>
+3. cd to client directory
+4. Run
+
+    ```bash
+    # Install dependencies
+    npm install
+
+    # Start the development server
+    npm run dev
+    ```
+
+## Output
+
+![Home Page](assets/screenshot.png)
 
 # Backend (ML + Server)
 
@@ -32,14 +45,14 @@ Python 3.x (<https://www.python.org/downloads/>)
 
 Necessary libraries:
 
-- pandas
-- numpy
-- sklearn
-- flask
-- spotipy
-- dotenv
-- gunicorn
-- http.server
+-   pandas
+-   numpy
+-   sklearn
+-   flask
+-   spotipy
+-   dotenv
+-   gunicorn
+-   http.server
 
 ## Getting Started
 
@@ -51,8 +64,6 @@ Necessary libraries:
     SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
     SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
     ```
-
-For instructions on obtaining your Spotify API credentials, refer to <https://developer.spotify.com/documentation/web-api/>
 
 3. Create a virtual environment in the project directory and activate it:
 
@@ -80,10 +91,6 @@ Prepare a list of songs: Create a JSON-formatted list containing information abo
 ```JSON
 [
    {
-      "name": "Castle on the Hill",
-      "year": 2017
-   },
-   {
       "name": "Look What You Made Me Do",
       "year": 2017
    }
@@ -110,57 +117,56 @@ The system will respond with a JSON list of recommended songs, including their n
 
 ```JSON
 [
-    {
-        "name": "Lovesick Girls",
-        "year": 2020,
-        "artists": "['BLACKPINK']"
-    },
-    {
-        "name": "HOME",
-        "year": 2019,
-        "artists": "['BTS']"
-    },
-    {
-        "name": "Sugar (feat. Francesco Yates)",
-        "year": 2015,
-        "artists": "['Robin Schulz', 'Francesco Yates']"
-    },
-    {
-        "name": "MAGO",
-        "year": 2020,
-        "artists": "['GFRIEND']"
-    },
-    {
-        "name": "Run",
-        "year": 2016,
-        "artists": "['BTS']"
-    },
-    {
-        "name": "In My Blood",
-        "year": 2018,
-        "artists": "['Shawn Mendes']"
-    },
-    {
-        "name": "カワキヲアメク",
-        "year": 2019,
-        "artists": "['美波']"
-    },
-    {
-        "name": "Hey Brother",
-        "year": 2013,
-        "artists": "['Avicii']"
-    },
-    {
-        "name": "Hot Stuff",
-        "year": 2020,
-        "artists": "['Kygo', 'Donna Summer']"
-    },
-    {
-        "name": "紅蓮華",
-        "year": 2019,
-        "artists": "['LiSA']"
-    }
+  {
+    "name": "Look What You Made Me Do",
+    "year": 2017,
+    "artists": [
+      "Taylor Swift"
+    ]
+  },
+  {
+    "name": "Believer",
+    "year": 2017,
+    "artists": [
+      "Imagine Dragons"
+    ]
+  },
+  {
+    "name": "New Rules",
+    "year": 2017,
+    "artists": [
+      "Dua Lipa"
+    ]
+  },
+  {
+    "name": "One Kiss (with Dua Lipa)",
+    "year": 2018,
+    "artists": [
+      "Calvin Harris",
+      "Dua Lipa"
+    ]
+  },
+  {
+    "name": "Don't Start Now",
+    "year": 2019,
+    "artists": [
+      "Dua Lipa"
+    ]
+  }
 ]
 ```
 
 Note: To properly utilize the code, you'll need a Spotify developer account and a Spotify app created to obtain your API credentials. Please refer to Spotify's documentation for detailed instructions: <https://developer.spotify.com/documentation/web-api/>
+
+## Future Scope
+
+- Implement Mood based song recommendation.
+- Implement a user-specific recommendation system.
+
+## License
+
+This repository is licensed under the [MIT License.](LICENSE)
+
+## Contact
+
+If you have any questions or suggestions, feel free to contact [Shantanu Wable.](https://linkedin.com/in/shxntanu)
