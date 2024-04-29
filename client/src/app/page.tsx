@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import Card from "@/components/card/Card";
 import axios from "axios";
 
+const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 interface Track {
     name: string;
     artist: string;
@@ -58,10 +60,7 @@ export default function Home() {
         ];
 
         try {
-            const response = await axios.post(
-                "http://localhost:8000/recommend",
-                data
-            );
+            const response = await axios.post(`${backendURL}/recommend`, data);
 
             console.log("RESPONSE: ", response);
 
