@@ -80,81 +80,81 @@ Necessary libraries:
 
 ## How to Use the Recommendation System
 
-Start the server
+1. Start the server
 
-```python
-gunicorn app:app
-```
+   ```python
+   gunicorn app:app
+   ```
 
-Prepare a list of songs: Create a JSON-formatted list containing information about the songs you want recommendations for, including their names and release years:
+2. Prepare a list of songs: Create a JSON-formatted list containing information about the songs you want recommendations for, including their names and release years:
 
-```JSON
-[
-   {
-      "name": "Look What You Made Me Do",
-      "year": 2017
-   }
-]
-```
+   ```JSON
+   [
+      {
+         "name": "Look What You Made Me Do",
+         "year": 2017
+      }
+   ]
+   ```
 
-Send the list to the **'/recommend'** API endpoint:
+3. Send the list to the **'/recommend'** API endpoint:
 
-Using cURL (for command line):
+   Using cURL (for command line):
+   
+   ```bash
+   curl -X POST http://<link>/recommend
+         -H "Content-Type: application/json"
+         -d '[{"name": "Castle on the Hill", "year": 2017}, {"name": "Look What You Made Me Do", "year": 2017}]'
+   ```
 
-```bash
-curl -X POST http://<link>/recommend
-      -H "Content-Type: application/json"
-      -d '[{"name": "Castle on the Hill", "year": 2017}, {"name": "Look What You Made Me Do", "year": 2017}]'
-```
-
-Using Postman or other tools:
-
-Set the request method to POST and the URL to <http://localhost:(port)/recommend>.
-Set the Content-Type header to application/json.
-Paste the JSON list of songs in the request body.
-
-The system will respond with a JSON list of recommended songs, including their names, artists, and years.
-
-```JSON
-[
-  {
-    "name": "Look What You Made Me Do",
-    "year": 2017,
-    "artists": [
-      "Taylor Swift"
-    ]
-  },
-  {
-    "name": "Believer",
-    "year": 2017,
-    "artists": [
-      "Imagine Dragons"
-    ]
-  },
-  {
-    "name": "New Rules",
-    "year": 2017,
-    "artists": [
-      "Dua Lipa"
-    ]
-  },
-  {
-    "name": "One Kiss (with Dua Lipa)",
-    "year": 2018,
-    "artists": [
-      "Calvin Harris",
-      "Dua Lipa"
-    ]
-  },
-  {
-    "name": "Don't Start Now",
-    "year": 2019,
-    "artists": [
-      "Dua Lipa"
-    ]
-  }
-]
-```
+   Using Postman or other tools:
+   
+   Set the request method to POST and the URL to <http://localhost:(port)/recommend>.
+   Set the Content-Type header to application/json.
+   Paste the JSON list of songs in the request body.
+   
+   The system will respond with a JSON list of recommended songs, including their names, artists, and years.
+   
+   ```JSON
+   [
+     {
+       "name": "Look What You Made Me Do",
+       "year": 2017,
+       "artists": [
+         "Taylor Swift"
+       ]
+     },
+     {
+       "name": "Believer",
+       "year": 2017,
+       "artists": [
+         "Imagine Dragons"
+       ]
+     },
+     {
+       "name": "New Rules",
+       "year": 2017,
+       "artists": [
+         "Dua Lipa"
+       ]
+     },
+     {
+       "name": "One Kiss (with Dua Lipa)",
+       "year": 2018,
+       "artists": [
+         "Calvin Harris",
+         "Dua Lipa"
+       ]
+     },
+     {
+       "name": "Don't Start Now",
+       "year": 2019,
+       "artists": [
+         "Dua Lipa"
+       ]
+     }
+   ]
+   ```
 
 Note: To properly utilize the code, you'll need a Spotify developer account and a Spotify app created to obtain your API credentials. Please refer to Spotify's documentation for detailed instructions: <https://developer.spotify.com/documentation/web-api/>
 
